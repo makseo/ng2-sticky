@@ -8,7 +8,7 @@ Angular2 directive (no jQuery required) that allows to stick the elements such a
 Install with npm:
 
 ```bash
-npm install ng2-sticky
+npm install ng2-sticky-kit
 ```
 
 ### Usage
@@ -22,6 +22,7 @@ npm install ng2-sticky
     <div [sticky] [sticky-zIndex="999"]>Sticky element</div>
 
 **[sticky-offset-top]** : (_default 0_) - pixels between the top of the page or container and the element
+
 **[sticky-offset-bottom]** : (_default 0_) - pixels between the bottom of the page or container and the element
 
     <div [sticky] [sticky-offset-top="20"] [sticky-offset-bottom="20"]>Sticky element</div>
