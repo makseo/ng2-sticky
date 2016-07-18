@@ -26,6 +26,7 @@
   "bugs": {
     "url": "https://github.com/makseo/ng2-sticky/issues"
   },
+  "main": "ng2-sticky-kit.js",
   "homepage": "https://github.com/makseo/ng2-sticky",
   "dependencies": {
     "@angular/common": "^2.0.0-rc.4",
