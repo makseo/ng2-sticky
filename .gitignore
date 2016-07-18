@@ -2,6 +2,8 @@
 build.xml
 node_modules
 npm-debug.log
+ng2-sticky-kit.js
+ng2-sticky-kit.js.map
 coverage
 typings
 src/**/*.js.map
