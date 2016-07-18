@@ -1,0 +1,57 @@
+{
+  "name": "ng2-sticky",
+  "version": "1.0.0",
+  "description": "Angular2 directive that allows to stick the elements such as header, menu, sidebar or any other block on the page.",
+  "scripts": {
+    "postinstall": "typings install",
+    "build": "./node_modules/typescript/bin/tsc",
+    "lite-server": "npm run build && ./node_modules/lite-server/bin/lite-server",
+    "test": "npm run build && ./node_modules/karma/bin/karma start karma.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/makseo/ng2-sticky.git"
+  },
+  "keywords": [
+    "angular",
+    "angular2",
+    "ng2",
+    "sticky",
+    "stick",
+    "stuck",
+    "fixed"
+  ],
+  "author": "Maksym Bidiuk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/makseo/ng2-sticky/issues"
+  },
+  "homepage": "https://github.com/makseo/ng2-sticky",
+  "dependencies": {
+    "@angular/common": "^2.0.0-rc.4",
+    "@angular/compiler": "^2.0.0-rc.4",
+    "@angular/core": "^2.0.0-rc.4",
+    "@angular/platform-browser": "^2.0.0-rc.4",
+    "@angular/platform-browser-dynamic": "^2.0.0-rc.4",
+    "@angular/upgrade": "2.0.0-rc.4",
+    "systemjs": "0.19.27",
+    "core-js": "^2.4.0",
+    "reflect-metadata": "^0.1.3",
+    "rxjs": "5.0.0-beta.6",
+    "zone.js": "^0.6.12"
+  },
+  "devDependencies": {
+    "jasmine-core": "~2.4.1",
+    "karma": "~0.13.22",
+    "karma-jasmine": "~1.0.2",
+    "karma-spec-reporter": "0.0.26",
+    "karma-chrome-launcher": "~1.0.1",
+    "karma-firefox-launcher": "~1.0.0",
+    "karma-phantomjs-launcher": "~1.0.0",
+    "phantomjs-polyfill": "0.0.2",
+    "phantomjs-prebuilt": "2.1.7",
+    "typescript": "^1.8.10",
+    "typings": "^1.0.4",
+    "lite-server": "^2.2.0"
+  }
+}

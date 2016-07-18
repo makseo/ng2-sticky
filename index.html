@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="/">
+    <title>ng2-sticky demo</title>
+    <link rel="stylesheet" href="demo/sticky-demo.css">
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.js"></script>
+    <script>
+        (function (global) {
+            System.config({
+                map: {
+                    "@angular": "node_modules/@angular",
+                    "rxjs": "node_modules/rxjs"
+                },
+                packages: {
+                    "demo": {main: "main", defaultExtension: "js"},
+                    "src": {defaultExtension: "js"},
+                    "@angular/common": {main: "index.js", defaultExtension: "js"},
+                    "@angular/compiler": {main: "index.js", defaultExtension: "js"},
+                    "@angular/core": {main: "index.js", defaultExtension: "js"},
+                    "@angular/http": {main: "index.js", defaultExtension: "js"},
+                    "@angular/platform-browser": {main: "index.js", defaultExtension: "js"},
+                    "@angular/platform-browser-dynamic": {main: "index.js", defaultExtension: "js"},
+                    "@angular/upgrade": {main: "index.js", defaultExtension: "js"},
+                    "rxjs": {defaultExtension: "js"}
+                }
+            });
+        })(this);
+    </script>
+    <script>
+        System.import('demo').catch(function (error) {
+            console.error(error)
+        });
+    </script>
+</head>
+<body>
+    <app></app>
+</body>
+</html>

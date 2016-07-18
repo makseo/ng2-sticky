@@ -1,0 +1,22 @@
+# Misc
+build.xml
+node_modules
+npm-debug.log
+coverage
+typings
+src/**/*.js.map
+src/**/*.js
+test/**/*.js.map
+test/**/*.js
+
+# JetBrains
+.idea
+.project
+.settings
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Mac
+.DS_Store
