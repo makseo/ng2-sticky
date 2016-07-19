@@ -141,6 +141,12 @@ export class Sticky implements OnInit, OnDestroy, AfterViewInit {
             return;
         }
 
+        // detecting when a container's height changes
+        let currentContainerHeight: number = this.getCssNumber(this.container, 'height');
+        if (currentContainerHeight !== this.containerHeight) {
+            this.defineDimensions();
+        }
+
         let position: number = this.scrollbarYPos();
 
         // unstick
