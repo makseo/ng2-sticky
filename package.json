@@ -3,7 +3,7 @@
   "version": "1.0.3",
   "description": "Angular2 directive that allows to stick the elements such as header, menu, sidebar or any other block on the page.",
   "scripts": {
-    "postinstall": "typings install",
+    "typings": "typings install",
     "build": "./node_modules/typescript/bin/tsc",
     "lite-server": "npm run build && ./node_modules/lite-server/bin/lite-server",
     "test": "npm run build && ./node_modules/karma/bin/karma start karma.conf.js"

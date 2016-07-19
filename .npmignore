@@ -2,7 +2,8 @@
 build.xml
 node_modules
 npm-debug.log
-typings
+test
+typings/*
 typings.json
 
 # JetBrains
