@@ -11,6 +11,12 @@ Install with npm:
 npm install ng2-sticky-kit
 ```
 
+Run demo application:
+
+```bash
+npm run lite-server
+```
+
 ### Usage
 
 **[sticky]** - makes an element sticky
@@ -40,3 +46,19 @@ npm install ng2-sticky-kit
 **[sticky-parent]** : (_default true_) - element relates to the parent container 
 
 > NOTE: parent container assign automatically a "position: relative" styling in order to use the absolute positioning
+
+### Example
+
+```typescript
+import {Component} from '@angular/core';
+import {Sticky} from 'ng2-sticky/ng2-sticky';
+
+@Component({
+  selector: 'app',
+  template: '<div [sticky]>demo</div>',
+  directives: [
+    Sticky
+  ]
+})
+export class DemoComponent { }
+```
