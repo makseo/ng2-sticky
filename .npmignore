@@ -2,13 +2,8 @@
 build.xml
 node_modules
 npm-debug.log
-ng2-sticky-kit.js
-ng2-sticky-kit.js.map
 typings
-src/**/*.js.map
-src/**/*.js
-test/**/*.js.map
-test/**/*.js
+typings.json
 
 # JetBrains
 .idea

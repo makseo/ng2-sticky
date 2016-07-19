@@ -1,10 +1,8 @@
 language: node_js
 node_js:
-  - 5
-  - 4
-  - stable
+  - 4.3.x
 
 sudo: false
 
 script:
-  - npm run build
+  - npm run test
