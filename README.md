@@ -1,7 +1,7 @@
 Angular2 Sticky Directive
 ==============
 
-Angular2 directive (no jQuery required) that allows to stick the elements such as header, menu, sidebar or any other block on the page.
+Angular2 Sticky Directive (no jQuery is required) makes HTML elements sticky. For instance, the header, the menu, the sidebar or any other block can be stuck at the desired position.
 
 ### NPM
 
@@ -23,7 +23,7 @@ npm run lite-server
 
     <div [sticky]>Sticky element</div>
 
-**[sticky-zIndex]** : (_default 10_) - controls CSS parameter z-index of the sticky element
+**[sticky-zIndex]** : (_default 10_) - controls z-index CSS parameter of the sticky element
 
     <div [sticky] [sticky-zIndex="999"]>Sticky element</div>
 
@@ -33,19 +33,19 @@ npm run lite-server
 
     <div [sticky] [sticky-offset-top="20"] [sticky-offset-bottom="20"]>Sticky element</div>
     
-**[sticky-start]** : (_default 0_) - position where the element should start being sticky
+**[sticky-start]** : (_default 0_) - position where the element should start to stick
 
     <div [sticky] [sticky-start="20"]>Sticky element</div>
     
-**[sticky-class]** : (_default "sticky"_) - CSS class that will be added after the element is "sticky"
+**[sticky-class]** : (_default "sticky"_) - CSS class that will be added after the element starts sticking
    
-**[sticky-end-class]** : (_default "sticky-end"_) - CSS class that will be added after the element ends to be "sticky"
+**[sticky-end-class]** : (_default "sticky-end"_) - CSS class that will be added to the sticky element after it ends sticking
 
 **[sticky-media-query]** : (_default ""_) - media query that allows to use sticky
 
-**[sticky-parent]** : (_default true_) - element relates to the parent container 
+**[sticky-parent]** : (_default true_) - if true, then the sticky element will be stuck relatively to the parent containers. Otherwise, _window_ will be used as the parent container. 
 
-> NOTE: parent container assign automatically a "position: relative" styling in order to use the absolute positioning
+> NOTE: the "position: relative" styling is added to the parent element automatically in order to use the absolute positioning
 
 ### Example
 
