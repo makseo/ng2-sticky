@@ -1,7 +1,7 @@
 import {Directive, ElementRef, Input, Output, EventEmitter, OnInit, OnDestroy, AfterViewInit} from '@angular/core';
 
 @Directive({
-    selector: '[sticky]'
+    selector: 'sticky'
 })
 export class Sticky implements OnInit, OnDestroy, AfterViewInit {
 

@@ -13,8 +13,7 @@ export function main() {
 
         it('is defined',
             async(inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-                tcb.createAsync(TestComponent).then((fixture: ComponentFixture<Sticky>) => {
-                    expect(true).toBeTruthy();
+                tcb.createAsync(TestComponent).then((fixture: ComponentFixture<TestComponent>) => {
                     let div = fixture.nativeElement.querySelector('div');
                     expect(Sticky).toBeDefined();
                     expect(div).toBeDefined();
@@ -26,7 +25,7 @@ export function main() {
 
 @Component({
     selector: 'test-component',
-    template: '<div [sticky] [sticky-offset-top]="50"></div>',
+    template: '<div sticky sticky-offset-top="50"></div>',
     directives: [
         Sticky
     ]

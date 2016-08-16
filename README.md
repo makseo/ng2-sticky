@@ -29,21 +29,22 @@ npm run lite-server
 
 **[sticky]** - makes an element sticky
 
-    <div [sticky]>Sticky element</div>
+    <sticky>Sticky element</sticky>
+    <div sticky>Sticky div</div>
 
 **[sticky-zIndex]** : (_default 10_) - controls z-index CSS parameter of the sticky element
 
-    <div [sticky] [sticky-zIndex="999"]>Sticky element</div>
+    <sticky sticky-zIndex="999">Sticky element</sticky>
 
 **[sticky-offset-top]** : (_default 0_) - pixels between the top of the page or container and the element
 
 **[sticky-offset-bottom]** : (_default 0_) - pixels between the bottom of the page or container and the element
 
-    <div [sticky] [sticky-offset-top="20"] [sticky-offset-bottom="20"]>Sticky element</div>
+    <sticky sticky-offset-top="20" sticky-offset-bottom="20">Sticky element</sticky>
     
 **[sticky-start]** : (_default 0_) - position where the element should start to stick
 
-    <div [sticky] [sticky-start="20"]>Sticky element</div>
+    <sticky sticky-start="20">Sticky element</sticky>
     
 **[sticky-class]** : (_default "sticky"_) - CSS class that will be added after the element starts sticking
    
@@ -63,7 +64,7 @@ import {Sticky} from 'ng2-sticky-kit/ng2-sticky-kit';
 
 @Component({
   selector: 'app',
-  template: '<div [sticky]>demo</div>',
+  template: '<sticky sticky-offset-top="20">demo</sticky>',
   directives: [
     Sticky
   ]
