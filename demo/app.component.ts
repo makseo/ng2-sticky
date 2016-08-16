@@ -3,7 +3,7 @@ import {Sticky} from '../src/ng2-sticky/ng2-sticky';
 
 @Component({
   selector: 'app',
-  templateUrl: 'demo/sticky-demo.component.html',
+  templateUrl: 'demo/app.component.html',
   directives: [
     Sticky
   ]

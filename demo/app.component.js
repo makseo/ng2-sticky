@@ -16,7 +16,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'app',
-            templateUrl: 'demo/sticky-demo.component.html',
+            templateUrl: 'demo/app.component.html',
             directives: [
                 ng2_sticky_1.Sticky
             ]
