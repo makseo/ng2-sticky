@@ -1,39 +1,34 @@
+/// <reference path="../typings/globals/jasmine/index.d.ts" />
+
 import {Component} from '@angular/core';
-import {describe, expect, it, inject, beforeEach, beforeEachProviders} from '@angular/core/testing';
-import {TestComponentBuilder, ComponentFixture} from '@angular/compiler/testing';
+import {async, inject, addProviders, TestComponentBuilder, ComponentFixture} from '@angular/core/testing';
 import {Sticky} from '../src/ng2-sticky/ng2-sticky';
 
+export function main() {
+    describe('ng2-sticky directive', () => {
+
+        beforeEach(() => {
+            addProviders([TestComponent]);
+        });
+
+        it('is defined',
+            async(inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
+                tcb.createAsync(TestComponent).then((fixture: ComponentFixture<Sticky>) => {
+                    expect(true).toBeTruthy();
+                    let div = fixture.nativeElement.querySelector('div');
+                    expect(Sticky).toBeDefined();
+                    expect(div).toBeDefined();
+                });
+            }))
+        );
+    });
+}
+
 @Component({
-    selector: 'container',
+    selector: 'test-component',
     template: '<div [sticky] [sticky-offset-top]="50"></div>',
     directives: [
         Sticky
     ]
 })
-export class Container { }
-
-export function main() {
-
-    describe('ng2-sticky directive', () => {
-
-        let tcb;
-
-        beforeEachProviders(() => [
-            TestComponentBuilder,
-            Container,
-            Sticky
-        ]);
-
-        beforeEach(inject([TestComponentBuilder], (_tcb: TestComponentBuilder) => {
-            tcb = _tcb;
-        }));
-
-        it('is defined', () => {
-            tcb.createAsync(Container).then((fixture: ComponentFixture<Sticky>) => {
-                let div = fixture.nativeElement.querySelector('div');
-                expect(Sticky).toBeDefined();
-                expect(div).toBeDefined();
-            });
-        });
-    });
-}
+export class TestComponent { }

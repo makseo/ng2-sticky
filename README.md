@@ -11,6 +11,14 @@ Install with npm:
 npm install ng2-sticky-kit
 ```
 
+Initial development environment:
+
+```bash
+npm run install
+npm run typings
+npm run build
+```
+
 Run demo application:
 
 ```bash
@@ -51,7 +59,7 @@ npm run lite-server
 
 ```typescript
 import {Component} from '@angular/core';
-import {Sticky} from 'ng2-sticky/ng2-sticky';
+import {Sticky} from 'ng2-sticky-kit/ng2-sticky-kit';
 
 @Component({
   selector: 'app',
@@ -62,3 +70,5 @@ import {Sticky} from 'ng2-sticky/ng2-sticky';
 })
 export class DemoComponent { }
 ```
+
+If you are using system.js, don't forget to add 'ng2-sticky-kit' to your list of packages.

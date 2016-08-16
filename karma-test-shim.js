@@ -24,7 +24,8 @@ System.config({
     defaultJSExtensions: true,
     map: {
         "@angular": "node_modules/@angular",
-        "rxjs": "node_modules/rxjs"
+        "rxjs": "node_modules/rxjs",
+        "zone.js": "node_modules/zone.js"
     },
     packages: {
         "@angular/common": {main: "index.js", defaultExtension: "js"},
@@ -34,7 +35,8 @@ System.config({
         "@angular/platform-browser": {main: "index.js", defaultExtension: "js"},
         "@angular/platform-browser-dynamic": {main: "index.js", defaultExtension: "js"},
         "@angular/upgrade": {main: "index.js", defaultExtension: "js"},
-        "rxjs": {defaultExtension: "js"}
+        "rxjs": {defaultExtension: "js"},
+        "zone.js": {defaultExtension: "js"}
     }
 });
 
