@@ -1,11 +1,11 @@
 {
   "name": "ng2-sticky-kit",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Angular2 directive that allows to stick the elements such as header, menu, sidebar or any other block on the page.",
   "scripts": {
     "typings": "typings install",
     "build": "./node_modules/typescript/bin/tsc",
-    "lite-server": "npm run build && ./node_modules/lite-server/bin/lite-server",
+    "lite-server": "./node_modules/lite-server/bin/lite-server",
     "test": "npm run build && ./node_modules/karma/bin/karma start karma.conf.js"
   },
   "repository": {
@@ -29,12 +29,12 @@
   "main": "ng2-sticky-kit.js",
   "homepage": "https://github.com/makseo/ng2-sticky",
   "dependencies": {
-    "@angular/common": "^2.0.0-rc.4",
-    "@angular/compiler": "^2.0.0-rc.4",
-    "@angular/core": "^2.0.0-rc.4",
-    "@angular/platform-browser": "^2.0.0-rc.4",
-    "@angular/platform-browser-dynamic": "^2.0.0-rc.4",
-    "@angular/upgrade": "2.0.0-rc.4",
+    "@angular/common": "^2.0.0-rc.5",
+    "@angular/compiler": "^2.0.0-rc.5",
+    "@angular/core": "^2.0.0-rc.5",
+    "@angular/platform-browser": "^2.0.0-rc.5",
+    "@angular/platform-browser-dynamic": "^2.0.0-rc.5",
+    "@angular/upgrade": "2.0.0-rc.5",
     "systemjs": "0.19.27",
     "core-js": "^2.4.0",
     "reflect-metadata": "^0.1.3",
