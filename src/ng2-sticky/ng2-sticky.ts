@@ -1,8 +1,10 @@
-import {Directive, ElementRef, Input, Output, EventEmitter, OnInit, OnDestroy, AfterViewInit} from '@angular/core';
+import { Component, ElementRef, Input, Output, EventEmitter, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 
-@Directive({
-    selector: 'sticky'
+@Component({
+    selector: 'sticky',
+    template: '<ng-content></ng-content>'
 })
+
 export class Sticky implements OnInit, OnDestroy, AfterViewInit {
 
     @Input('sticky') stickyContent: string;
@@ -72,6 +74,7 @@ export class Sticky implements OnInit, OnDestroy, AfterViewInit {
 
     onResize(): void {
         this.defineDimensions();
+        this.sticker();
     }
 
     defineDimensions(): void {
