@@ -4,9 +4,11 @@
     </header>
 
     <div class="nav-container">
-        <nav sticky sticky-parent="false">
-            <div class="container">menu</div>
-        </nav>
+        <sticky [sticky-parent]="false" [sticky-width]="'100%'">
+            <nav>
+                <div class="container">menu</div>
+            </nav>
+        </sticky>
     </div>
 
     <div class="container">
@@ -44,12 +46,15 @@
                     mollitia reprehenderit totam.</p>
             </div>
 
-            <div class="aside" [sticky] [sticky-offset-top]="68" [sticky-offset-bottom]="40" [sticky-media-query]="'min-width: 768px'">
-                <h2>Heading 1</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid amet architecto
-                    asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias, mollitia
-                    reprehenderit totam.</p>
-            </div>
+            <sticky class="aside" [sticky-offset-top]="68" [sticky-offset-bottom]="40" [sticky-media-query]="'min-width: 768px'">
+                <div class="panel">
+                    <h2>Heading 1</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid amet
+                        architecto
+                        asperiores dolorem facilis, libero natus quis soluta tempora? Commodi distinctio magnam molestias, mollitia
+                        reprehenderit totam.</p>
+                </div>
+            </sticky>
         </div>
 
         <div class="row">
@@ -96,10 +101,12 @@
                     mollitia reprehenderit totam.</p>
             </div>
 
-            <div class="aside" [sticky] [sticky-offset-top]="68">
-                <h2>Heading 2</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-            </div>
+            <sticky class="aside" [sticky-offset-top]="68">
+                <div class="panel">
+                    <h2>Heading 2</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+                </div>
+            </sticky>
         </div>
 
         <div>

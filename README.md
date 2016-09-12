@@ -1,7 +1,7 @@
-Angular2 Sticky Directive
+Angular2 Sticky (Release Candidate 6)
 ==============
 
-Angular2 Sticky Directive (no jQuery is required) makes HTML elements sticky. For instance, the header, the menu, the sidebar or any other block can be stuck at the desired position.
+Angular2 Sticky (no jQuery is required) makes HTML elements sticky. For instance, the header, the menu, the sidebar or any other block can be stuck at the desired position.
 
 ### NPM
 
@@ -14,7 +14,7 @@ npm install ng2-sticky-kit
 Initial development environment:
 
 ```bash
-npm run install
+npm install
 npm run typings
 npm run build
 ```
@@ -35,6 +35,8 @@ npm run lite-server
 **[sticky-zIndex]** : (_default 10_) - controls z-index CSS parameter of the sticky element
 
     <sticky sticky-zIndex="999">Sticky element</sticky>
+    
+**[sticky-width]** : (_default "auto"_) - width of the sticky element
 
 **[sticky-offset-top]** : (_default 0_) - pixels between the top of the page or container and the element
 
@@ -58,16 +60,35 @@ npm run lite-server
 
 ### Example
 
+app.module.ts
+```typescript
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {AppComponent} from './app.component';
+import {Sticky} from 'ng2-sticky-kit/ng2-sticky-kit';
+
+@NgModule({
+    imports: [
+        BrowserModule
+    ],
+    declarations: [
+        AppComponent,
+        Sticky
+    ],
+    bootstrap: [
+        AppComponent
+    ]
+})
+export class AppModule {}
+```
+
+app.component.ts
 ```typescript
 import {Component} from '@angular/core';
-import {Sticky} from 'ng2-sticky-kit/ng2-sticky-kit';
 
 @Component({
   selector: 'app',
-  template: '<sticky sticky-offset-top="20">demo</sticky>',
-  directives: [
-    Sticky
-  ]
+  template: '<sticky [sticky-offset-top]="20"><div>demo</div></sticky>',
 })
 export class DemoComponent { }
 ```

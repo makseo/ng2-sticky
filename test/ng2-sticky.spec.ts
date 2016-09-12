@@ -1,33 +1,34 @@
-/// <reference path="../typings/globals/jasmine/index.d.ts" />
-
 import {Component} from '@angular/core';
-import {async, inject, addProviders, TestComponentBuilder, ComponentFixture} from '@angular/core/testing';
+import {async, TestBed} from '@angular/core/testing';
 import {Sticky} from '../src/ng2-sticky/ng2-sticky';
 
 export function main() {
     describe('ng2-sticky directive', () => {
 
         beforeEach(() => {
-            addProviders([TestComponent]);
+            TestBed.configureTestingModule({
+                declarations: [
+                    TestComponent,
+                    Sticky
+                ],
+            });
         });
 
-        it('is defined',
-            async(inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-                tcb.createAsync(TestComponent).then((fixture: ComponentFixture<TestComponent>) => {
-                    let div = fixture.nativeElement.querySelector('div');
-                    expect(Sticky).toBeDefined();
-                    expect(div).toBeDefined();
-                });
-            }))
-        );
+        it('is defined', async(() => {
+            TestBed.compileComponents().then(() => {
+                let fixture = TestBed.createComponent(TestComponent);
+                let componentInstance = fixture.componentInstance;
+                let stickyElement = fixture.nativeElement.querySelector('sticky');
+                expect(Sticky).toBeDefined();
+                expect(stickyElement).toBeDefined();
+            });
+        }));
     });
 }
 
 @Component({
     selector: 'test-component',
-    template: '<div sticky sticky-offset-top="50"></div>',
-    directives: [
-        Sticky
-    ]
+    template: '<sticky [sticky-offset-top]="50"></sticky>'
 })
-export class TestComponent { }
+export class TestComponent {
+}

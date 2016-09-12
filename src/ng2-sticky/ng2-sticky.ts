@@ -1,12 +1,13 @@
-import {Directive, ElementRef, Input, Output, EventEmitter, OnInit, OnDestroy, AfterViewInit} from '@angular/core';
+import {Component, ElementRef, Input, Output, EventEmitter, OnInit, OnDestroy, AfterViewInit} from '@angular/core';
 
-@Directive({
-    selector: 'sticky'
+@Component({
+    selector: 'sticky',
+    template: '<ng-content></ng-content>'
 })
 export class Sticky implements OnInit, OnDestroy, AfterViewInit {
 
-    @Input('sticky') stickyContent: string;
     @Input('sticky-zIndex') zIndex: number = 10;
+    @Input('sticky-width') width: string = 'auto';
     @Input('sticky-offset-top') offsetTop: number = 0;
     @Input('sticky-offset-bottom') offsetBottom: number = 0;
     @Input('sticky-start') start: number = 0;
@@ -53,8 +54,13 @@ export class Sticky implements OnInit, OnDestroy, AfterViewInit {
             top: this.getCssValue(this.elem, 'top'),
             right: this.getCssValue(this.elem, 'right'),
             left: this.getCssValue(this.elem, 'left'),
-            bottom: this.getCssValue(this.elem, 'bottom')
+            bottom: this.getCssValue(this.elem, 'bottom'),
+            width: this.getCssValue(this.elem, 'width'),
         };
+
+        if (this.width == 'auto') {
+            this.width = this.originalCss.width;
+        }
 
         this.defineDimensions();
 
@@ -72,6 +78,7 @@ export class Sticky implements OnInit, OnDestroy, AfterViewInit {
 
     onResize(): void {
         this.defineDimensions();
+        this.sticker();
     }
 
     defineDimensions(): void {
@@ -106,6 +113,7 @@ export class Sticky implements OnInit, OnDestroy, AfterViewInit {
         this.elem.style.right = 'auto';
         this.elem.style.left = elementLeft + 'px';
         this.elem.style.bottom = 'auto';
+        this.elem.style.width = this.width;
 
         this.activated.next(this.elem);
     }
@@ -121,6 +129,7 @@ export class Sticky implements OnInit, OnDestroy, AfterViewInit {
         this.elem.style.right = 0;
         this.elem.style.left = 'auto';
         this.elem.style.bottom = this.offsetBottom + 'px';
+        this.elem.style.width = this.width;
 
         this.deactivated.next(this.elem);
     }
