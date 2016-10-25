@@ -1,6 +1,6 @@
 # Misc
 build.xml
-node_modules
+node_modules/*
 npm-debug.log
 test
 typings/*
@@ -17,3 +17,5 @@ Desktop.ini
 
 # Mac
 .DS_Store
+
+demo/*
