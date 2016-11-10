@@ -90,7 +90,7 @@ export class Sticky implements OnInit, OnDestroy, AfterViewInit {
         if (this.parentMode) {
             this.scrollFinish = this.containerStart - this.start - this.offsetBottom + (this.containerHeight - this.elemHeight);
         } else {
-            this.scrollFinish = document.body.offsetHeight;
+            this.scrollFinish = document.body.scrollHeight;
         }
     }
 
