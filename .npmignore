@@ -1,9 +1,14 @@
 # Misc
 build.xml
-node_modules/*
 npm-debug.log
 test
 typings/*
+karma*
+demo/*
+node_modules/*
+src/**/*.ts
+tsconfig.json
+tslint.json
 typings.json
 
 # JetBrains
@@ -17,5 +22,3 @@ Desktop.ini
 
 # Mac
 .DS_Store
-
-demo/*

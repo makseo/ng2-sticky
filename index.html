@@ -13,12 +13,14 @@
         (function (global) {
             System.config({
                 map: {
+                    app: '.',
                     "@angular": "node_modules/@angular",
-                    "rxjs": "node_modules/rxjs"
+                    "rxjs": "node_modules/rxjs",
+                    "ng2-sticky-kit": "."
                 },
                 packages: {
                     "demo": {main: "main", defaultExtension: "js"},
-                    "src": {defaultExtension: "js"},
+                    "ng2-sticky-kit": {main: "ng2-sticky-kit.js"},
                     "@angular/common": {main: "bundles/common.umd.js"},
                     "@angular/compiler": {main: "bundles/compiler.umd.js"},
                     "@angular/core": {main: "bundles/core.umd.js"},

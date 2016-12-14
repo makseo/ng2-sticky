@@ -3,12 +3,14 @@ Angular2 Sticky
 
 Angular2 Sticky (no jQuery is required) makes HTML elements sticky. For instance, the header, the menu, the sidebar or any other block can be stuck at the desired position.
 
+Supports Angular 2.3.0
+
 ### NPM
 
 Install with npm:
 
 ```bash
-npm install ng2-sticky-kit
+npm install ng2-sticky-kit --save
 ```
 
 Initial development environment:
@@ -69,11 +71,11 @@ import {Sticky} from 'ng2-sticky-kit/ng2-sticky-kit';
 
 @NgModule({
     imports: [
-        BrowserModule
+        BrowserModule,
+        StickyModule
     ],
     declarations: [
-        AppComponent,
-        Sticky
+        AppComponent
     ],
     bootstrap: [
         AppComponent
@@ -93,4 +95,4 @@ import {Component} from '@angular/core';
 export class DemoComponent { }
 ```
 
-If you are using system.js, don't forget to add 'ng2-sticky-kit' to your list of packages.
+**If you are using system.js, don't forget to add 'ng2-sticky-kit' to your list of packages.**

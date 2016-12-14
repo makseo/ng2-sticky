@@ -4,7 +4,7 @@ import {Component, ElementRef, Input, Output, EventEmitter, OnInit, OnDestroy, A
     selector: 'sticky',
     template: '<ng-content></ng-content>'
 })
-export class Sticky implements OnInit, OnDestroy, AfterViewInit {
+export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
 
     @Input('sticky-zIndex') zIndex: number = 10;
     @Input('sticky-width') width: string = 'auto';
