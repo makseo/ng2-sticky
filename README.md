@@ -66,8 +66,8 @@ app.module.ts
 ```typescript
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
+import {StickyModule} from 'ng2-sticky-kit/ng2-sticky-kit';
 import {AppComponent} from './app.component';
-import {Sticky} from 'ng2-sticky-kit/ng2-sticky-kit';
 
 @NgModule({
     imports: [

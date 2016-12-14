@@ -6,10 +6,8 @@ typings/*
 karma*
 demo/*
 node_modules/*
-src/**/*.ts
 tsconfig.json
 tslint.json
-typings.json
 
 # JetBrains
 .idea
