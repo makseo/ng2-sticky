@@ -58,7 +58,7 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
             width: this.getCssValue(this.elem, 'width'),
         };
 
-        if (this.width == 'auto') {
+        if (this.width === 'auto') {
             this.width = this.originalCss.width;
         }
 
@@ -135,7 +135,9 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     matchMediaQuery(): any {
-        if (!this.mediaQuery) return true;
+        if (!this.mediaQuery) {
+            return true;
+        }
         return (
             window.matchMedia('(' + this.mediaQuery + ')').matches ||
             window.matchMedia(this.mediaQuery).matches
@@ -158,15 +160,18 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
 
         let position: number = this.scrollbarYPos();
 
-        // unstick
         if (this.isStuck && (position < this.containerStart || position > this.scrollFinish) || position > this.scrollFinish) {
+            // unstick
             this.resetElement();
-            if (position > this.scrollFinish) this.unstuckElement();
+            if (position > this.scrollFinish) {
+                this.unstuckElement();
+            }
             this.isStuck = false;
-        }
-        // stick
-        else if (this.isStuck === false && position > this.containerStart && position < this.scrollFinish) {
-            this.stuckElement();
+        } else {
+            // stick
+            if (this.isStuck === false && position > this.containerStart && position < this.scrollFinish) {
+                this.stuckElement();
+            }
         }
     }
 

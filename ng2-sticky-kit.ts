@@ -15,4 +15,5 @@ export default {
     declarations: [StickyComponent],
     exports: [StickyComponent]
 })
-export class StickyModule { }
+export class StickyModule {
+}
