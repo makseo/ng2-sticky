@@ -35,7 +35,7 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
     private containerWidth: number;
     private elemHeight: number;
     private elemWidth: number;
-    private containerStart: number;
+    private scrollStart: number;
     private scrollFinish: number;
 
     constructor(private element: ElementRef) {
@@ -76,10 +76,12 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     onScroll(): void {
+        // console.log('Window scrolled');
         this.sticker();
     }
 
     onResize(): void {
+        // console.log('Window resized');
         this.defineDimensions();
         if (!this.isDisabled) {
             this.fixHorizontal();
@@ -88,22 +90,30 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     defineDimensions(): void {
+        // console.log('Defining dimensions');
         let containerTop: number = this.getBoundingClientRectValue(this.container, 'top');
         this.windowHeight = window.innerHeight;
         this.elemHeight = this.getCssNumber(this.elem, 'height');
         this.elemWidth = this.getCssNumber(this.elem, 'width');
         this.containerHeight = this.getCssNumber(this.container, 'height');
         this.containerWidth = this.getCssNumber(this.container, 'width');
-        this.containerStart = containerTop + this.scrollbarYPos() + this.start;
+        this.scrollStart = containerTop + this.scrollbarYPos() + this.start;
+        // console.log('containerTop: ' + containerTop);
+        // console.log('windowHeight: ' + this.windowHeight);
+        // console.log('elemHeight: ' + this.elemHeight);
+        // console.log('containerHeight: ' + this.containerHeight);
+        // console.log('scrollStart: ' + this.scrollStart);
         if (this.parentMode) {
-            this.scrollFinish = this.containerStart - this.start - this.offsetTop - this.offsetBottom +
+            this.scrollFinish = this.scrollStart - this.start - this.offsetTop - this.offsetBottom +
                 (this.containerHeight - this.elemHeight);
         } else {
             this.scrollFinish = document.body.offsetHeight;
         }
+        // console.log(this.scrollFinish);
     }
 
     resetElement(): void {
+        // console.log('Resetting element');
         this.elem.classList.remove(this.stickClass);
         this.elem.classList.remove(this.endStickClass);
         Object.assign(this.elem.style, {
@@ -179,10 +189,10 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     sticker(): void {
-
         // check media query
         if (!this.matchMediaQuery()) {
             if (!this.isDisabled) {
+                // console.log('Media query not met, disabling functionality');
                 this.resetElement();
                 this.isDisabled = true;
                 this.isStuck = false;
@@ -190,32 +200,32 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
             return;
         } else {
             if (this.isDisabled) {
+                // console.log('Media query met, enabling functionality');
                 this.isDisabled = false;
             }
         }
 
         // detecting when a container's height changes
         let currentContainerHeight: number = this.getCssNumber(this.container, 'height');
-        if (currentContainerHeight !== this.containerHeight) {
+        if (currentContainerHeight !== this.containerHeight || this.scrollFinish < 0) {
             this.defineDimensions();
         }
 
         let position: number = this.scrollbarYPos();
 
         if (!this.isDisabled) {
-            if (position < this.containerStart) {
+            if ((this.isStuck && position < this.scrollStart) || this.scrollFinish < 0) {
+                // Reset element if scroll position is higher than the sticking should start (or if scrollFinish is "invalid")
                 this.resetElement();
+                this.isStuck = false;
             } else {
                 if (position > this.scrollFinish) {
-                    // unstick, absolute position at bottom of container
-                    this.resetElement();
-                    if (position > this.scrollFinish) {
-                        this.unstuckElement();
-                    }
+                    // Unstick element, if the element reached the bottom (absolute position at bottom of container)
+                    this.unstuckElement();
                     this.isStuck = false;
                 } else {
-                    // stick, fixed position
-                    if (!this.isStuck && position > this.containerStart && position < this.scrollFinish) {
+                    // Stick element otherwise, fixed position
+                    if (!this.isStuck && position > this.scrollStart && position < this.scrollFinish) {
                         this.stuckElement();
                     }
                 }
