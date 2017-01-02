@@ -2,8 +2,8 @@
 build.xml
 node_modules
 npm-debug.log
-ng2-sticky-kit.js
-ng2-sticky-kit.js.map
+fixed-ng2-sticky-kit.js
+fixed-ng2-sticky-kit.js.map
 src/**/*.js.map
 src/**/*.js
 test/**/*.js.map
@@ -13,6 +13,7 @@ test/**/*.js
 .idea
 .project
 .settings
+*.iml
 
 # Windows
 Thumbs.db
@@ -20,4 +21,3 @@ Desktop.ini
 
 # Mac
 .DS_Store
-/ng2-sticky.iml

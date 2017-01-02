@@ -13,6 +13,7 @@ tslint.json
 .idea
 .project
 .settings
+*.iml
 
 # Windows
 Thumbs.db
@@ -20,4 +21,3 @@ Desktop.ini
 
 # Mac
 .DS_Store
-/ng2-sticky.iml

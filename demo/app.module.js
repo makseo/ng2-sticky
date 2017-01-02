@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var app_component_1 = require("./app.component");
-var ng2_sticky_kit_1 = require("../ng2-sticky-kit");
+var fixed_ng2_sticky_kit_1 = require("../fixed-ng2-sticky-kit");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -21,7 +21,7 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [
             platform_browser_1.BrowserModule,
-            ng2_sticky_kit_1.StickyModule
+            fixed_ng2_sticky_kit_1.StickyModule
         ],
         declarations: [
             app_component_1.AppComponent
