@@ -15,6 +15,7 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
     @Input('sticky-end-class') endStickClass: string = 'sticky-end';
     @Input('sticky-media-query') mediaQuery: string = '';
     @Input('sticky-parent') parentMode: boolean = true;
+    @Input('sticky-side') absoluteSide: string = 'left';
 
     @Output() activated = new EventEmitter();
     @Output() deactivated = new EventEmitter();
@@ -23,6 +24,7 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
     private onResizeBind: EventListener = this.onResize.bind(this);
 
     private isStuck: boolean = false;
+    private isDisabled: boolean = false;
 
     private elem: any;
     private container: any;
@@ -30,7 +32,9 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
 
     private windowHeight: number;
     private containerHeight: number;
+    private containerWidth: number;
     private elemHeight: number;
+    private elemWidth: number;
     private containerStart: number;
     private scrollFinish: number;
 
@@ -44,7 +48,6 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-
         // define scroll container as parent element
         this.container = this.elem.parentNode;
 
@@ -78,6 +81,9 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
 
     onResize(): void {
         this.defineDimensions();
+        if (!this.isDisabled) {
+            this.fixHorizontal();
+        }
         this.sticker();
     }
 
@@ -85,10 +91,13 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
         let containerTop: number = this.getBoundingClientRectValue(this.container, 'top');
         this.windowHeight = window.innerHeight;
         this.elemHeight = this.getCssNumber(this.elem, 'height');
+        this.elemWidth = this.getCssNumber(this.elem, 'width');
         this.containerHeight = this.getCssNumber(this.container, 'height');
-        this.containerStart = containerTop + this.scrollbarYPos() - this.offsetTop + this.start;
+        this.containerWidth = this.getCssNumber(this.container, 'width');
+        this.containerStart = containerTop + this.scrollbarYPos() + this.start;
         if (this.parentMode) {
-            this.scrollFinish = this.containerStart - this.start - this.offsetBottom + (this.containerHeight - this.elemHeight);
+            this.scrollFinish = this.containerStart - this.start - this.offsetTop - this.offsetBottom +
+                (this.containerHeight - this.elemHeight);
         } else {
             this.scrollFinish = document.body.offsetHeight;
         }
@@ -96,12 +105,35 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
 
     resetElement(): void {
         this.elem.classList.remove(this.stickClass);
-        Object.assign(this.elem.style, this.originalCss);
+        Object.assign(this.elem.style, {
+            zIndex: '',
+            position: '',
+            top: '',
+            right: '',
+            left: '',
+            bottom: '',
+            width: '',
+        });
+    }
+
+    fixHorizontal(): void {
+        if (this.isStuck) {
+            let elementLeft: number;
+            let containerLeft: number = this.getBoundingClientRectValue(this.container, 'left') + this.scrollbarXPos();
+            if (this.absoluteSide !== 'right') {
+                elementLeft = containerLeft + parseInt(this.originalCss.left, 10);
+            } else {
+                let elementRight: number = parseInt(this.originalCss.right, 10);
+                elementLeft = containerLeft + this.containerWidth - this.elemWidth - elementRight;
+            }
+            this.elem.style.left = elementLeft + 'px';
+            this.elem.style.right = 'auto';
+        }
     }
 
     stuckElement(): void {
-
         this.isStuck = true;
+        this.isDisabled = false;
 
         this.elem.classList.remove(this.endStickClass);
         this.elem.classList.add(this.stickClass);
@@ -120,14 +152,15 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
 
     unstuckElement(): void {
         this.isStuck = false;
+        this.isDisabled = false;
 
         this.elem.classList.add(this.endStickClass);
 
         this.container.style.position = 'relative';
         this.elem.style.position = 'absolute';
         this.elem.style.top = 'auto';
-        this.elem.style.right = 0;
-        this.elem.style.left = 'auto';
+        this.elem.style.right = '';
+        this.elem.style.left = '';
         this.elem.style.bottom = this.offsetBottom + 'px';
         this.elem.style.width = this.width;
 
@@ -147,9 +180,16 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
     sticker(): void {
 
         // check media query
-        if (this.isStuck && !this.matchMediaQuery()) {
-            this.resetElement();
+        if (!this.matchMediaQuery()) {
+            if (!this.isDisabled) {
+                this.resetElement();
+                this.isDisabled = true;
+            }
             return;
+        } else {
+            if (this.isDisabled) {
+                this.isDisabled = false;
+            }
         }
 
         // detecting when a container's height changes
@@ -160,7 +200,8 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
 
         let position: number = this.scrollbarYPos();
 
-        if (this.isStuck && (position < this.containerStart || position > this.scrollFinish) || position > this.scrollFinish) {
+        if (!this.isDisabled &&
+            (this.isStuck && (position < this.containerStart || position > this.scrollFinish) || position > this.scrollFinish)) {
             // unstick
             this.resetElement();
             if (position > this.scrollFinish) {
@@ -169,10 +210,14 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
             this.isStuck = false;
         } else {
             // stick
-            if (this.isStuck === false && position > this.containerStart && position < this.scrollFinish) {
+            if (!this.isDisabled && !this.isStuck && position > this.containerStart && position < this.scrollFinish) {
                 this.stuckElement();
             }
         }
+    }
+
+    private scrollbarXPos(): number {
+        return window.pageXOffset || document.documentElement.scrollLeft;
     }
 
     private scrollbarYPos(): number {
