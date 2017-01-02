@@ -26,7 +26,7 @@
   "bugs": {
     "url": "https://github.com/FaterW/ng2-sticky/issues"
   },
-  "main": "ng2-sticky-kit.js",
+  "main": "fixed-ng2-sticky-kit.ts",
   "homepage": "https://github.com/FaterW/ng2-sticky",
   "dependencies": {
     "core-js": "^2.4.1",
