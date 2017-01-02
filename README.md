@@ -12,7 +12,7 @@ Supports Angular 2.3.0
 Install with npm:
 
 ```bash
-npm install ng2-sticky-kit --save
+npm install fixed-ng2-sticky-kit --save
 ```
 
 Initial development environment:
@@ -60,6 +60,8 @@ npm run lite-server
 
 **[sticky-parent]** : (_default true_) - if true, then the sticky element will be stuck relatively to the parent containers. Otherwise, _window_ will be used as the parent container. 
 
+**[sticky-side]** : (_default "left"_) - the side of the original absolute positioning of the element 
+
 > NOTE: the "position: relative" styling is added to the parent element automatically in order to use the absolute positioning
 
 ### Example
@@ -68,7 +70,7 @@ app.module.ts
 ```typescript
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {StickyModule} from 'ng2-sticky-kit-fixed/ng2-sticky-kit';
+import {StickyModule} from 'fixed-ng2-sticky-kit/ng2-sticky-kit';
 import {AppComponent} from './app.component';
 
 @NgModule({
