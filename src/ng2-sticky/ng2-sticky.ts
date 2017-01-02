@@ -203,17 +203,21 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
         let position: number = this.scrollbarYPos();
 
         if (!this.isDisabled) {
-            if (this.isStuck && (position < this.containerStart || position > this.scrollFinish) || position > this.scrollFinish) {
-                // unstick
+            if (position < this.containerStart) {
                 this.resetElement();
-                if (position > this.scrollFinish) {
-                    this.unstuckElement();
-                }
-                this.isStuck = false;
             } else {
-                // stick
-                if (!this.isStuck && position > this.containerStart && position < this.scrollFinish) {
-                    this.stuckElement();
+                if (position > this.scrollFinish) {
+                    // unstick, absolute position at bottom of container
+                    this.resetElement();
+                    if (position > this.scrollFinish) {
+                        this.unstuckElement();
+                    }
+                    this.isStuck = false;
+                } else {
+                    // stick, fixed position
+                    if (!this.isStuck && position > this.containerStart && position < this.scrollFinish) {
+                        this.stuckElement();
+                    }
                 }
             }
         }
