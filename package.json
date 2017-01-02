@@ -1,6 +1,6 @@
 {
   "name": "ng2-sticky-kit-fixed",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Angular2 component that allows to stick the elements such as header, menu, sidebar or any other block on the page. Based on https://github.com/makseo/ng2-sticky.",
   "scripts": {
     "typings": "typings install",

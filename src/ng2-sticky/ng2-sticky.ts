@@ -105,6 +105,7 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
 
     resetElement(): void {
         this.elem.classList.remove(this.stickClass);
+        this.elem.classList.remove(this.endStickClass);
         Object.assign(this.elem.style, {
             zIndex: '',
             position: '',
@@ -201,18 +202,19 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
 
         let position: number = this.scrollbarYPos();
 
-        if (!this.isDisabled &&
-            (this.isStuck && (position < this.containerStart || position > this.scrollFinish) || position > this.scrollFinish)) {
-            // unstick
-            this.resetElement();
-            if (position > this.scrollFinish) {
-                this.unstuckElement();
-            }
-            this.isStuck = false;
-        } else {
-            // stick
-            if (!this.isDisabled && !this.isStuck && position > this.containerStart && position < this.scrollFinish) {
-                this.stuckElement();
+        if (!this.isDisabled) {
+            if (this.isStuck && (position < this.containerStart || position > this.scrollFinish) || position > this.scrollFinish) {
+                // unstick
+                this.resetElement();
+                if (position > this.scrollFinish) {
+                    this.unstuckElement();
+                }
+                this.isStuck = false;
+            } else {
+                // stick
+                if (!this.isStuck && position > this.containerStart && position < this.scrollFinish) {
+                    this.stuckElement();
+                }
             }
         }
     }
