@@ -184,6 +184,7 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
             if (!this.isDisabled) {
                 this.resetElement();
                 this.isDisabled = true;
+                this.isStuck = false;
             }
             return;
         } else {
