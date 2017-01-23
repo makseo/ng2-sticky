@@ -28,12 +28,7 @@
   },
   "main": "ng2-sticky-kit.js",
   "homepage": "https://github.com/makseo/ng2-sticky",
-  "dependencies": {
-    "core-js": "^2.4.1",
-    "reflect-metadata": "^0.1.8",
-    "rxjs": "5.0.0-rc.4",
-    "zone.js": "^0.7.2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@angular/common": "2.3.0",
     "@angular/compiler": "2.3.0",
@@ -43,6 +38,7 @@
     "@types/core-js": "^0.9.35",
     "@types/jasmine": "^2.5.38",
     "@types/node": "^6.0.52",
+    "core-js": "^2.4.1",
     "jasmine-core": "~2.5.2",
     "karma": "0.13.22",
     "karma-chrome-launcher": "~1.0.1",
@@ -53,7 +49,10 @@
     "lite-server": "~2.2.2",
     "phantomjs-polyfill": "0.0.2",
     "phantomjs-prebuilt": "2.1.14",
+    "reflect-metadata": "^0.1.8",
+    "rxjs": "5.0.0-rc.4",
     "systemjs": "~0.19.41",
-    "typescript": "~2.1.4"
+    "typescript": "~2.1.4",
+    "zone.js": "^0.7.2"
   }
 }
