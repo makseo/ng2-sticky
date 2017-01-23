@@ -63,7 +63,6 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
         }
 
         this.defineDimensions();
-
         this.sticker();
     }
 
@@ -73,6 +72,7 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     onScroll(): void {
+        this.defineDimensions();
         this.sticker();
     }
 
@@ -185,11 +185,11 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
 
     private getCssValue(element: any, property: string): any {
         let result: any = '';
-        let style = element.currentStyle || window.getComputedStyle(element);
-        if (typeof style[property] !== 'undefined') {
-            result = style[property];
-        } else {
-            result = style.getPropertyValue(property);
+        if (typeof window.getComputedStyle !== 'undefined') {
+            result = window.getComputedStyle(element, null).getPropertyValue(property);
+        }
+        else if (typeof element.currentStyle !== 'undefined')  {
+            result = element.currentStyle[property];
         }
         return result;
     }
