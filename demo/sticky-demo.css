@@ -24,6 +24,9 @@ nav {
 .nav-container {
     display: block;
     height: 48px;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
 }
 
 .container {
@@ -49,12 +52,20 @@ nav {
 
 .content {
     float: left;
-    width: 640px;
+    width: 600px;
+    padding: 20px;
 }
 
-.aside {
+.rside {
     background: #cecece;
     float: right;
+    padding: 20px;
+    width: 260px;
+}
+
+.lside {
+    background: #cecece;
+    float: left;
     padding: 20px;
     width: 260px;
 }
