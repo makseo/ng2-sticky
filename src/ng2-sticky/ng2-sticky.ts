@@ -79,6 +79,11 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
     onResize(): void {
         this.defineDimensions();
         this.sticker();
+
+        if (this.isStuck) {
+            this.unstuckElement();
+            this.stuckElement();
+        }
     }
 
     defineDimensions(): void {
