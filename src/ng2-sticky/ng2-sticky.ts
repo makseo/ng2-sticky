@@ -35,11 +35,11 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
     private containerStart: number;
     private scrollFinish: number;
 
-    constructor(private element: ElementRef) {
-        this.elem = element.nativeElement;
-    }
+    constructor(private element: ElementRef) { }
 
     ngOnInit(): void {
+        this.elem = this.element.nativeElement;
+
         window.addEventListener('scroll', this.onScrollBind);
         window.addEventListener('resize', this.onResizeBind);
     }

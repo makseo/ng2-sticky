@@ -9,7 +9,11 @@
     "lib": [ "es2015", "dom" ],
     "removeComments": false,
     "noImplicitAny": true,
-    "suppressImplicitAnyIndexErrors": true
+    "suppressImplicitAnyIndexErrors": true,
+    "noEmitOnError": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "skipLibCheck": true
   },
   "exclude": [
     "node_modules"

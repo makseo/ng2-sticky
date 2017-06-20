@@ -17,7 +17,6 @@ export function main() {
         it('is defined', async(() => {
             TestBed.compileComponents().then(() => {
                 let fixture = TestBed.createComponent(TestComponent);
-                let componentInstance = fixture.componentInstance;
                 let stickyElement = fixture.nativeElement.querySelector('sticky');
                 expect(StickyComponent).toBeDefined();
                 expect(stickyElement).toBeDefined();
