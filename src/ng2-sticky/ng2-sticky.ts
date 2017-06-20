@@ -18,7 +18,8 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
 
     @Output() activated = new EventEmitter();
     @Output() deactivated = new EventEmitter();
-
+    @Output() reset = new EventEmitter();
+    
     private onScrollBind: EventListener = this.onScroll.bind(this);
     private onResizeBind: EventListener = this.onResize.bind(this);
 
@@ -102,6 +103,8 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
     resetElement(): void {
         this.elem.classList.remove(this.stickClass);
         Object.assign(this.elem.style, this.originalCss);
+
+        this.reset.next(this.elem);
     }
 
     stuckElement(): void {
