@@ -1,10 +1,10 @@
-import {Component, ElementRef, Input, Output, EventEmitter, OnInit, OnDestroy, AfterViewInit} from '@angular/core';
+import {Component, ElementRef, Input, Output, EventEmitter, OnInit, AfterViewInit, HostListener} from '@angular/core';
 
 @Component({
     selector: 'sticky',
     template: '<ng-content></ng-content>'
 })
-export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
+export class StickyComponent implements OnInit, AfterViewInit {
 
     @Input('sticky-zIndex') zIndex: number = 10;
     @Input('sticky-width') width: string = 'auto';
@@ -19,9 +19,6 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
     @Output() activated = new EventEmitter();
     @Output() deactivated = new EventEmitter();
     @Output() reset = new EventEmitter();
-    
-    private onScrollBind: EventListener = this.onScroll.bind(this);
-    private onResizeBind: EventListener = this.onResize.bind(this);
 
     private isStuck: boolean = false;
 
@@ -39,9 +36,6 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
 
     ngOnInit(): void {
         this.elem = this.element.nativeElement;
-
-        window.addEventListener('scroll', this.onScrollBind);
-        window.addEventListener('resize', this.onResizeBind);
     }
 
     ngAfterViewInit(): void {
@@ -67,17 +61,8 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
         this.sticker();
     }
 
-    ngOnDestroy(): void {
-        window.removeEventListener('scroll', this.onScrollBind);
-        window.removeEventListener('resize', this.onResizeBind);
-    }
-
-    onScroll(): void {
-        this.defineDimensions();
-        this.sticker();
-    }
-
-    onResize(): void {
+    @HostListener('window:resize', ['$event'])
+    onResize() {
         this.defineDimensions();
         this.sticker();
 
@@ -85,6 +70,12 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
             this.unstuckElement();
             this.stuckElement();
         }
+    }
+
+    @HostListener('window:scroll', ['$event'])
+    onScroll(): void {
+        this.defineDimensions();
+        this.sticker();
     }
 
     defineDimensions(): void {
