@@ -105,12 +105,12 @@ export class StickyComponent implements OnInit, AfterViewInit {
         this.elem.classList.remove(this.endStickClass);
         this.elem.classList.add(this.stickClass);
 
-        let elementLeft = this.getBoundingClientRectValue(this.elem, 'left');
+        let left = this.getBoundingClientRectValue(this.elem, 'left');
         this.elem.style.zIndex = this.zIndex;
         this.elem.style.position = 'fixed';
         this.elem.style.top = this.offsetTop + 'px';
         this.elem.style.right = 'auto';
-        this.elem.style.left = elementLeft + 'px';
+        this.elem.style.left = left + 'px';
         this.elem.style.bottom = 'auto';
         this.elem.style.width = this.width;
 
@@ -122,11 +122,12 @@ export class StickyComponent implements OnInit, AfterViewInit {
 
         this.elem.classList.add(this.endStickClass);
 
+        let right = this.getCssValue(this.elem, 'float') === 'right' ? 0 : 'auto';
         this.container.style.position = 'relative';
         this.elem.style.position = 'absolute';
         this.elem.style.top = 'auto';
-        this.elem.style.right = 0;
         this.elem.style.left = 'auto';
+        this.elem.style.right = right;
         this.elem.style.bottom = this.offsetBottom + 'px';
         this.elem.style.width = this.width;
 

@@ -21,6 +21,14 @@ nav {
     background: #2f4f90;
 }
 
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
 .nav-container {
     display: block;
     height: 48px;
@@ -51,9 +59,9 @@ nav {
 }
 
 .content {
-    float: left;
     width: 600px;
     padding: 20px;
+    background: #f1f2f3;
 }
 
 .rside {
