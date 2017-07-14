@@ -40,8 +40,8 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
     ngOnInit(): void {
         this.elem = this.element.nativeElement;
 
-        window.addEventListener('scroll', this.onScrollBind);
-        window.addEventListener('resize', this.onResizeBind);
+        document.addEventListener('scroll', this.onScrollBind, true);
+        document.addEventListener('resize', this.onResizeBind, true);
     }
 
     ngAfterViewInit(): void {
@@ -68,8 +68,8 @@ export class StickyComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     ngOnDestroy(): void {
-        window.removeEventListener('scroll', this.onScrollBind);
-        window.removeEventListener('resize', this.onResizeBind);
+        document.removeEventListener('scroll', this.onScrollBind, true);
+        document.removeEventListener('resize', this.onResizeBind, true);
     }
 
     onScroll(): void {
