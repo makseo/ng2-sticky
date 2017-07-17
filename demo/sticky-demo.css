@@ -45,8 +45,6 @@ nav {
 .row {
     border-bottom: 1px solid #ccc;
     margin-bottom: 40px;
-    padding-top: 20px;
-    padding-bottom: 40px;
     position: relative;
 }
 
@@ -64,18 +62,13 @@ nav {
     background: #f1f2f3;
 }
 
-.rside {
-    background: #cecece;
-    float: right;
-    padding: 20px;
-    width: 260px;
+.side {
 }
 
-.lside {
-    background: #cecece;
-    float: left;
+.side .panel {
     padding: 20px;
     width: 260px;
+    background: #cecece;
 }
 
 h2 {

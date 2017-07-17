@@ -11,7 +11,7 @@
         </sticky>
     </div>
 
-    <div class="container">
+    <div class="container" style="padding: 24px 0;">
         <div class="row">
             <div class="content left">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid amet architecto
@@ -46,7 +46,7 @@
                     mollitia reprehenderit totam.</p>
             </div>
 
-            <sticky class="rside" [sticky-offset-top]="68" [sticky-offset-bottom]="40" [sticky-media-query]="'min-width: 768px'">
+            <sticky class="side right" [sticky-float]="'right'" [sticky-offset-top]="68" [sticky-offset-bottom]="0" [sticky-media-query]="'min-width: 768px'">
                 <div class="panel">
                     <h2>Heading 1</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, similique, sunt. Ab aliquid amet
@@ -58,7 +58,7 @@
         </div>
 
         <div class="row">
-            <sticky class="lside" [sticky-offset-top]="68" [sticky-offset-bottom]="40">
+            <sticky class="side left" [sticky-offset-top]="68" [sticky-offset-bottom]="40">
                 <div class="panel">
                     <h2>Heading 2</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>

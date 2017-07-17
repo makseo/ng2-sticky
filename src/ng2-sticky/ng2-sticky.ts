@@ -15,6 +15,7 @@ export class StickyComponent implements OnInit, AfterViewInit {
     @Input('sticky-end-class') endStickClass: string = 'sticky-end';
     @Input('sticky-media-query') mediaQuery: string = '';
     @Input('sticky-parent') parentMode: boolean = true;
+    @Input('sticky-orientation') orientation: string = 'none';
 
     @Output() activated = new EventEmitter();
     @Output() deactivated = new EventEmitter();
@@ -39,10 +40,20 @@ export class StickyComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-
         // define scroll container as parent element
         this.container = this.elem.parentNode;
+        this.defineOriginalDimensions();
+        this.sticker();
+    }
 
+    @HostListener('window:scroll', ['$event'])
+    @HostListener('window:resize', ['$event'])
+    @HostListener('window:orientationchange', ['$event'])
+    onChange(): void {
+        this.sticker();
+    }
+
+    defineOriginalDimensions(): void {
         this.originalCss = {
             zIndex: this.getCssValue(this.elem, 'zIndex'),
             position: this.getCssValue(this.elem, 'position'),
@@ -56,26 +67,6 @@ export class StickyComponent implements OnInit, AfterViewInit {
         if (this.width == 'auto') {
             this.width = this.originalCss.width;
         }
-
-        this.defineDimensions();
-        this.sticker();
-    }
-
-    @HostListener('window:resize', ['$event'])
-    onResize() {
-        this.defineDimensions();
-        this.sticker();
-
-        if (this.isStuck) {
-            this.unstuckElement();
-            this.stuckElement();
-        }
-    }
-
-    @HostListener('window:scroll', ['$event'])
-    onScroll(): void {
-        this.defineDimensions();
-        this.sticker();
     }
 
     defineDimensions(): void {
@@ -99,20 +90,20 @@ export class StickyComponent implements OnInit, AfterViewInit {
     }
 
     stuckElement(): void {
-
         this.isStuck = true;
 
         this.elem.classList.remove(this.endStickClass);
         this.elem.classList.add(this.stickClass);
 
-        let left = this.getBoundingClientRectValue(this.elem, 'left');
-        this.elem.style.zIndex = this.zIndex;
-        this.elem.style.position = 'fixed';
-        this.elem.style.top = this.offsetTop + 'px';
-        this.elem.style.right = 'auto';
-        this.elem.style.left = left + 'px';
-        this.elem.style.bottom = 'auto';
-        this.elem.style.width = this.width;
+        Object.assign(this.elem.style, {
+            zIndex: this.zIndex,
+            position: 'fixed',
+            top: this.offsetTop + 'px',
+            right: 'auto',
+            bottom: 'auto',
+            left: this.getBoundingClientRectValue(this.elem, 'left') + 'px',
+            width: this.width
+        });
 
         this.activated.next(this.elem);
     }
@@ -122,14 +113,16 @@ export class StickyComponent implements OnInit, AfterViewInit {
 
         this.elem.classList.add(this.endStickClass);
 
-        let right = this.getCssValue(this.elem, 'float') === 'right' ? 0 : 'auto';
         this.container.style.position = 'relative';
-        this.elem.style.position = 'absolute';
-        this.elem.style.top = 'auto';
-        this.elem.style.left = 'auto';
-        this.elem.style.right = right;
-        this.elem.style.bottom = this.offsetBottom + 'px';
-        this.elem.style.width = this.width;
+
+        Object.assign(this.elem.style, {
+            position: 'absolute',
+            top: 'auto',
+            left: 'auto',
+            right: this.getCssValue(this.elem, 'float') === 'right' || this.orientation === 'right' ? 0 : 'auto',
+            bottom: this.offsetBottom + 'px',
+            width: this.width
+        });
 
         this.deactivated.next(this.elem);
     }
@@ -143,6 +136,9 @@ export class StickyComponent implements OnInit, AfterViewInit {
     }
 
     sticker(): void {
+
+        // define dimensions
+        this.defineDimensions();
 
         // check media query
         if (this.isStuck && !this.matchMediaQuery()) {
@@ -176,7 +172,7 @@ export class StickyComponent implements OnInit, AfterViewInit {
 
     private getBoundingClientRectValue(element: any, property: string): number {
         let result = 0;
-        if (element.getBoundingClientRect) {
+        if (element && element.getBoundingClientRect) {
             let rect = element.getBoundingClientRect();
             result = (typeof rect[property] !== 'undefined') ? rect[property] : 0;
         }
@@ -195,6 +191,7 @@ export class StickyComponent implements OnInit, AfterViewInit {
     }
 
     private getCssNumber(element: any, property: string): number {
+        if (typeof element === 'undefined') return 0;
         return parseInt(this.getCssValue(element, property), 10) || 0;
     }
 }

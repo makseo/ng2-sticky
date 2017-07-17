@@ -32,6 +32,8 @@ npm run lite-server
 
     <sticky>Sticky element</sticky>
     <div sticky>Sticky div</div>
+    
+**[sticky-orientation]** : (_default "none"_) - orientation for sticky element ("left", "right", "none")
 
 **[sticky-zIndex]** : (_default 10_) - controls z-index CSS parameter of the sticky element
 
