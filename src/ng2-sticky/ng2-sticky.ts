@@ -1,7 +1,7 @@
 import {Component, ElementRef, Input, Output, EventEmitter, OnInit, AfterViewInit, HostListener} from '@angular/core';
 
 @Component({
-    selector: 'sticky',
+    selector: 'sticky, [sticky]',
     template: '<ng-content></ng-content>'
 })
 export class StickyComponent implements OnInit, AfterViewInit {
