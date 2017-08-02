@@ -152,6 +152,11 @@ export class StickyComponent implements OnInit, AfterViewInit {
             this.defineDimensions();
         }
 
+        // check if the sticky element is above the container
+        if (this.elemHeight >= currentContainerHeight) {
+          return;
+        }
+
         let position: number = this.scrollbarYPos();
 
         // unstick
