@@ -182,7 +182,7 @@ export class StickyComponent implements OnInit, AfterViewInit {
     private getCssValue(element: any, property: string): any {
         let result: any = '';
         if (typeof window.getComputedStyle !== 'undefined') {
-            result = window.getComputedStyle(element, null).getPropertyValue(property);
+            result = window.getComputedStyle(element).getPropertyValue(property);
         }
         else if (typeof element.currentStyle !== 'undefined')  {
             result = element.currentStyle[property];
