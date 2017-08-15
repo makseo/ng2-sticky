@@ -16,6 +16,7 @@ export class StickyComponent implements OnInit, AfterViewInit {
     @Input('sticky-media-query') mediaQuery: string = '';
     @Input('sticky-parent') parentMode: boolean = true;
     @Input('sticky-orientation') orientation: string = 'none';
+    @Input('sticky-float') float: string = '';
 
     @Output() activated = new EventEmitter();
     @Output() deactivated = new EventEmitter();
