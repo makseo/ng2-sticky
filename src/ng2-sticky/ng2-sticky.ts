@@ -137,9 +137,6 @@ export class StickyComponent implements OnInit, AfterViewInit {
 
     sticker(): void {
 
-        // define dimensions
-        this.defineDimensions();
-
         // check media query
         if (this.isStuck && !this.matchMediaQuery()) {
             this.resetElement();
