@@ -79,6 +79,8 @@ export class StickyComponent implements OnInit, AfterViewInit {
             this.scrollFinish = this.containerStart - this.start - this.offsetBottom + (this.containerHeight - this.elemHeight);
         } else {
             this.scrollFinish = document.body.offsetHeight;
+            console.log('offsetHeight ', document.body.offsetHeight);
+            console.log('scrollHeight: ', document.body.scrollHeight);
         }
     }
 
@@ -136,9 +138,6 @@ export class StickyComponent implements OnInit, AfterViewInit {
     }
 
     sticker(): void {
-
-        // define dimensions
-        this.defineDimensions();
 
         // check media query
         if (this.isStuck && !this.matchMediaQuery()) {
