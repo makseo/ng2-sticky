@@ -1,22 +1,15 @@
-# Misc
-build.xml
-node_modules
+.DS_STORE
+dist/
+node_modules/
+out-tsc/
+debug.log
 npm-debug.log
-ng2-sticky-kit.js
-ng2-sticky-kit.js.map
-src/**/*.js.map
 src/**/*.js
-test/**/*.js.map
-test/**/*.js
-
-# JetBrains
+!src/demo/systemjs.config.js
+!src/demo/systemjs.config.lib.js
+!**/*systemjs-angular-loader.js
+*.js.map
+e2e/**/*.js
+e2e/**/*.js.map
+coverage
 .idea
-.project
-.settings
-
-# Windows
-Thumbs.db
-Desktop.ini
-
-# Mac
-.DS_Store

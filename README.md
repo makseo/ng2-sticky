@@ -23,7 +23,7 @@ npm run build
 Run demo application:
 
 ```bash
-npm run lite-server
+npm run serve
 ```
 
 ### Usage
@@ -67,7 +67,7 @@ app.module.ts
 ```typescript
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {StickyModule} from 'ng2-sticky-kit/ng2-sticky-kit';
+import {StickyModule} from 'ng2-sticky-kit';
 import {AppComponent} from './app.component';
 
 @NgModule({
@@ -82,7 +82,7 @@ import {AppComponent} from './app.component';
         AppComponent
     ]
 })
-export class AppModule {}
+export class AppModule { }
 ```
 
 app.component.ts
