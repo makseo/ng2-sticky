@@ -162,8 +162,8 @@ export class StickyComponent implements OnInit, AfterViewInit {
             if (position > this.scrollFinish) this.unstuckElement();
             this.isStuck = false;
         }
-        // stick
-        else if (this.isStuck === false && position > this.containerStart && position < this.scrollFinish) {
+        // stick. if already stuck, re-applies CSS in case any inputs have changed.
+        else if (position > this.containerStart && position < this.scrollFinish) {
             this.stuckElement();
         }
     }
