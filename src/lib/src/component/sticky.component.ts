@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, Output, EventEmitter, OnInit, AfterViewInit, HostListener} from '@angular/core';
+import { Directive, Component, ElementRef, Input, Output, EventEmitter, OnInit, AfterViewInit, HostListener } from '@angular/core';
 
 @Component({
     selector: 'sticky',
@@ -6,6 +6,7 @@ import {Component, ElementRef, Input, Output, EventEmitter, OnInit, AfterViewIni
 })
 export class StickyComponent implements OnInit, AfterViewInit {
 
+    @Input('sticky') sticky: string;
     @Input('sticky-zIndex') zIndex: number = 10;
     @Input('sticky-width') width: string = 'auto';
     @Input('sticky-offset-top') offsetTop: number = 0;
@@ -64,7 +65,7 @@ export class StickyComponent implements OnInit, AfterViewInit {
             width: this.getCssValue(this.elem, 'width'),
         };
 
-        if (this.width == 'auto') {
+        if (this.width === 'auto') {
             this.width = this.originalCss.width;
         }
     }
@@ -197,3 +198,9 @@ export class StickyComponent implements OnInit, AfterViewInit {
         return parseInt(this.getCssValue(element, property), 10) || 0;
     }
 }
+
+
+@Directive({
+  selector: '[sticky]'
+})
+export class StickyDirective extends StickyComponent { }

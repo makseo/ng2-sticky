@@ -3,7 +3,7 @@ Angular Sticky
 
 Angular Sticky (no jQuery is required) makes HTML elements sticky. For instance, the header, the menu, the sidebar or any other block can be stuck at the desired position.
 
-Supports Angular 2 & 4 versions
+Supports Angular 2+ version
 
 ### NPM
 
@@ -30,8 +30,8 @@ npm run serve
 
 **[sticky]** - makes an element sticky
 
-    <sticky>Sticky element</sticky>
-    <div sticky>Sticky div</div>
+    <sticky [sticky-offset-top]="20">Sticky component</sticky>
+    <div sticky [sticky-offset-top]="20">Sticky directive</div>
     
 **[sticky-orientation]** : (_default "none"_) - orientation for sticky element ("left", "right", "none")
 
