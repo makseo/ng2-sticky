@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
-
-import { StickyComponent } from './component/sticky.component';
+import { StickyDirective, StickyComponent } from './component/sticky.component';
 
 @NgModule({
-  declarations: [StickyComponent],
-  exports: [StickyComponent]
+  declarations: [StickyComponent, StickyDirective],
+  exports: [StickyComponent, StickyDirective]
 })
 export class StickyModule { }
