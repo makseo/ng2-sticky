@@ -1,11 +1,12 @@
 import {Component, ElementRef, Input, Output, EventEmitter, OnInit, AfterViewInit, HostListener} from '@angular/core';
 
 @Component({
-    selector: 'sticky',
+    selector: 'sticky,[sticky]',
     template: '<ng-content></ng-content>'
 })
 export class StickyComponent implements OnInit, AfterViewInit {
 
+    @Input('sticky') sticky: string;
     @Input('sticky-zIndex') zIndex: number = 10;
     @Input('sticky-width') width: string = 'auto';
     @Input('sticky-offset-top') offsetTop: number = 0;
@@ -64,7 +65,7 @@ export class StickyComponent implements OnInit, AfterViewInit {
             width: this.getCssValue(this.elem, 'width'),
         };
 
-        if (this.width == 'auto') {
+        if (this.width === 'auto') {
             this.width = this.originalCss.width;
         }
     }
@@ -163,7 +164,7 @@ export class StickyComponent implements OnInit, AfterViewInit {
             this.isStuck = false;
         }
         // stick
-        else if (this.isStuck === false && position > this.containerStart && position < this.scrollFinish) {
+        else if (position > this.containerStart && position < this.scrollFinish) {
             this.stuckElement();
         }
     }
