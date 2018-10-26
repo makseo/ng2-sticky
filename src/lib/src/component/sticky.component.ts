@@ -22,7 +22,7 @@ export class StickyComponent implements OnInit, AfterViewInit {
     @Output() deactivated = new EventEmitter();
     @Output() reset = new EventEmitter();
 
-    private isStuck: boolean = false;
+    isStuck: boolean = false;
 
     private elem: any;
     private container: any;
