@@ -78,6 +78,7 @@ export class StickyComponent implements OnInit, AfterViewInit {
         this.containerStart = containerTop + this.scrollbarYPos() - this.offsetTop + this.start;
         if (this.parentMode) {
             this.scrollFinish = this.containerStart - this.start - this.offsetBottom + (this.containerHeight - this.elemHeight);
+            this.elem.style.width = this.elem.parentNode.offsetWidth + 'px';
         } else {
             this.scrollFinish = document.body.offsetHeight;
         }
@@ -103,7 +104,7 @@ export class StickyComponent implements OnInit, AfterViewInit {
             right: 'auto',
             bottom: 'auto',
             left: this.getBoundingClientRectValue(this.elem, 'left') + 'px',
-            width: this.width
+            width: this.getCssValue(this.elem, 'width')
         });
 
         this.activated.next(this.elem);
@@ -122,7 +123,7 @@ export class StickyComponent implements OnInit, AfterViewInit {
             left: 'auto',
             right: this.getCssValue(this.elem, 'float') === 'right' || this.orientation === 'right' ? 0 : 'auto',
             bottom: this.offsetBottom + 'px',
-            width: this.width
+            width: this.getCssValue(this.elem, 'width')
         });
 
         this.deactivated.next(this.elem);
