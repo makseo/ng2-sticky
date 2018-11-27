@@ -1,0 +1,15 @@
+.DS_STORE
+src/
+test/
+.editorconfig
+.gitignore
+.travis.yml
+bs-config.json
+build.js
+inline-resources.js
+karma-coverage.conf.js
+karma-test-shim.js
+karma.conf.js
+tsconfig.json
+tslint.json
+
