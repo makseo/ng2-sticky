@@ -42,7 +42,9 @@ System.config({
   baseURL: 'base/src/lib',
   // Extend usual application package list with test folder
   packages: {
-    rxjs: { defaultExtension: 'js' },
+    'rxjs': {defaultExtension: 'js', main: 'index.js'},
+    'rxjs-compat': {defaultExtension: 'js', main: 'index.js'},
+    'rxjs/operators': {defaultExtension: 'js', main: 'index.js'},
     '': { defaultExtension: 'js' },
     src: {
         defaultExtension: 'js',
@@ -74,6 +76,7 @@ System.config({
     '@angular/router/testing': 'npm:@angular/router/bundles/router-testing.umd.js',
     '@angular/forms/testing': 'npm:@angular/forms/bundles/forms-testing.umd.js',
     'rxjs': 'npm:rxjs',
+    'rxjs-compat': 'npm:rxjs-compat',
     'src': 'src'
   }
 });

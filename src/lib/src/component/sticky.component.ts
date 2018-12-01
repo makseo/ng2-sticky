@@ -103,7 +103,7 @@ export class StickyComponent implements OnInit, AfterViewInit {
             right: 'auto',
             bottom: 'auto',
             left: this.getBoundingClientRectValue(this.elem, 'left') + 'px',
-            width: this.width
+            width: this.getCssValue(this.elem, 'width')
         });
 
         this.activated.next(this.elem);
@@ -122,7 +122,7 @@ export class StickyComponent implements OnInit, AfterViewInit {
             left: 'auto',
             right: this.getCssValue(this.elem, 'float') === 'right' || this.orientation === 'right' ? 0 : 'auto',
             bottom: this.offsetBottom + 'px',
-            width: this.width
+            width: this.getCssValue(this.elem, 'width')
         });
 
         this.deactivated.next(this.elem);

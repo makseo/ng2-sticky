@@ -25,6 +25,7 @@
 
       // other libraries
       'rxjs': 'npm:rxjs',
+      'rxjs-compat': 'npm:rxjs-compat'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -36,9 +37,9 @@
           }
         }
       },
-      rxjs: {
-        defaultExtension: 'js'
-      },
+      'rxjs': {defaultExtension: 'js', main: 'index.js'},
+      'rxjs-compat': {defaultExtension: 'js', main: 'index.js'},
+      'rxjs/operators': {defaultExtension: 'js', main: 'index.js'},
       'ng2-sticky-kit': {
         main: 'index.js',
         defaultExtension: 'js',
