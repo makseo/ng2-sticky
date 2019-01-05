@@ -157,16 +157,30 @@ export class StickyComponent implements OnInit, AfterViewInit {
 
         let position: number = this.scrollbarYPos();
 
-        // unstick
-        if (this.isStuck && (position < this.containerStart || position > this.scrollFinish) || position > this.scrollFinish) {
-            this.resetElement();
-            if (position > this.scrollFinish) this.unstuckElement();
-            this.isStuck = false;
+        // if parent container is window
+        if (this.parentMode === false) {
+            // unstick
+            if (position < this.containerStart) {
+                this.resetElement();
+                this.isStuck = false;
+            }
+            // stick
+            else if (position > this.containerStart) {
+                this.stuckElement();
+            }
         }
-        // stick
-        else if (position > this.containerStart && position < this.scrollFinish) {
-            this.stuckElement();
-        }
+        else {
+          // unstick
+          if (this.isStuck && (position < this.containerStart || position > this.scrollFinish) || position > this.scrollFinish) {
+              this.resetElement();
+              if (position > this.scrollFinish) this.unstuckElement();
+              this.isStuck = false;
+          }
+          // stick
+          else if (position > this.containerStart && position < this.scrollFinish) {
+              this.stuckElement();
+          }
+        }  
     }
 
     private scrollbarYPos(): number {
